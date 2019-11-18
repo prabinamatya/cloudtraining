@@ -35,7 +35,7 @@ public class UserControllerTest {
         assertNotNull(actual);
         
         assertEquals(10, actual.size());
-
+        assertEquals("Shanna@melissa.tv", actual.get(1).getEmail());
     }
     
     
@@ -44,5 +44,12 @@ public class UserControllerTest {
     	ResponseEntity<List> usersActual = testRestTemplate.getForEntity("/users", List.class);
     	
     	assertNotNull(usersActual);
+    }
+
+    @Test
+    public void testApiGetUsersById() {
+        User user3 = userController.getUserById(3);
+        assertNotNull(user3);
+        assertEquals("Clementine Bauch", user3.getName());
     }
 }
